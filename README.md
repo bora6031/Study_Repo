@@ -6,4 +6,4 @@
 
 ### CS
 
-Computer Sience를 학습합니다.
+Computer Science를 학습합니다.
