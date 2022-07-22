@@ -1,0 +1,64 @@
+import java.util.Arrays;
+
+class Solution {
+    int[] leftHand={0,3};
+    int[] rightHand={2,3};
+    int[][] keyPad={{1,4,7,10},{2,5,8,0},{3,6,9,11}};
+
+    public String solution(int[] numbers, String hand) {
+        String answer = "";
+
+        for(int k:numbers){
+            for(int i=0;i<3;i++){
+                for(int j=0;j<4;j++){
+                    if(keyPad[i][j]==k){
+                        switch(i){
+                            case 0: 
+                                answer+="L";
+                                leftHand[0]=i;
+                                leftHand[1]=j;
+                                break;
+                            case 1:
+                                if(nearhand(i,j,hand).equals("left")){
+                                    answer+="L";
+                                    leftHand[0]=i;
+                                    leftHand[1]=j;
+                                }else{
+                                    answer+="R";
+                                    rightHand[0]=i;
+                                    rightHand[1]=j;
+                                }
+                                break;
+                            default: 
+                                answer+="R";
+                                rightHand[0]=i;
+                                rightHand[1]=j;
+                                break;
+                        }
+                    }
+
+                }
+            }
+        }
+        return answer;
+    }
+    public String nearhand(int i, int j,String hand){
+
+        int distanceLeft= j>leftHand[1]?j-leftHand[1]:leftHand[1]-j;
+        if(leftHand[0]!=1){
+            distanceLeft+=1;
+        }
+        int distanceRight=j>rightHand[1]?j-rightHand[1]:rightHand[1]-j;
+        if(rightHand[0]!=1){
+            distanceRight+=1;
+        }
+        if(distanceLeft>distanceRight){
+            return "right";
+        }else if(distanceLeft<distanceRight){
+            return "left";
+        }
+        return hand;
+
+
+    }
+}
