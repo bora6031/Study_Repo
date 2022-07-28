@@ -1,0 +1,53 @@
+import java.util.Arrays;
+
+class Solution {
+    public int solution(int n, int[] lost, int[] reserve) {
+         
+        int answer = 0; // 체육 수업을 들을 수 있는 학생의 최대값
+            
+        // 현재 체육복을 가진 학생의 수 = n - lost.length
+        answer = n - lost.length;
+                
+        // for문으로 차례차례 비교할 것이기 때문에 정렬
+        Arrays.sort(lost);
+        Arrays.sort(reserve);
+        
+        // 여분학생이 도둑맞음 = 체육복 빌려줄 수 X(비교대상에서 제외)
+        for(int i = 0; i < lost.length; i++){
+            for(int j = 0; j < reserve.length; j++){
+                if(lost[i] == reserve[j]){
+                    reserve[j] = -1;
+                    lost[i] = -1;
+                    answer++;   // 여분 체욕복이 있는 학생이니까 수업 가능
+                    break;
+                } 
+            }
+        }
+        
+        boolean cnt = false;
+        for(int i = 0; i < lost.length; i++){
+            for(int j = 0; j < reserve.length; j++){
+                if(lost[i] < 1){
+                    break;
+                }
+                if((reserve[j] >= 1)){
+                    if((lost[i] - 1) == reserve[j]){
+                        if(cnt){
+                            // 앞 학생이 이미 체육복을 빌렸음
+                            cnt = false;
+                        }else{
+                            answer++;
+                            break;
+                        }
+                    }else if((lost[i] + 1) == reserve[j]){
+                        answer++;
+                        cnt=true;
+                        break;
+                    }
+                } 
+            }
+        }
+        
+        return answer;
+    }
+}
