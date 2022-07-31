@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int* solution(int lottos[], size_t lottos_len, int win_nums[], size_t win_nums_len) {
+   
+    int i=1;
+    int sum=0;
+    
+    while(true){
+        sum+=i;
+        if(i==5) break;
+        i++;
+    }
+    print("1~5까지의 합: %d\n",sum);
+    return 0;
+}
