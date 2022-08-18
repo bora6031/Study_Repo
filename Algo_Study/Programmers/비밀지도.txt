@@ -1,0 +1,38 @@
+import java.util.Arrays;
+class Solution {
+    public String[] solution(int n, int[] arr1, int[] arr2) {
+        String[] answer = new String[n];
+        int[] binaryArr1;
+        int[] binaryArr2;
+        String s;
+        
+        for(int i=0;i<n;i++){
+            binaryArr1=binary(arr1[i],n);
+            binaryArr2=binary(arr2[i],n);
+            s="";
+            
+            for(int j=0;j<n;j++){
+                if(binaryArr1[j]==1||binaryArr2[j]==1){
+                    s+='#';
+                }else{
+                    s+=" ";
+                }
+            }
+            answer[i]=s;
+        }
+   
+ 
+        return answer;
+    }
+    
+    public int[] binary(int n,int length){
+        int[] arr=new int[length];
+        int count=length-1;
+        
+        while(n>=1){
+            arr[count--]=n%2;
+            n=n/2;
+        }
+        return arr;
+    }
+}
