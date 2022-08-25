@@ -1,0 +1,16 @@
+class Solution {
+    public int solution(int n) {
+        int answer = 0;
+        int num=n;
+        String three="";
+        
+        while(num>0){
+            three=three+(num%3);
+            num=num/3;   
+        }
+        
+        answer=Integer.parseInt(three,3);
+        
+        return answer;
+    }
+}
