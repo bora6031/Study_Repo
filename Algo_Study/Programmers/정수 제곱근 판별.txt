@@ -1,0 +1,10 @@
+class Solution {
+    public double solution(long n) {
+        double answer = 0;
+        answer=Math.sqrt(n);
+        if(answer!=Math.round(answer)){
+            return -1;
+        }
+        return (answer+1)*(answer+1);
+    }
+}
