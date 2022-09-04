@@ -1,0 +1,38 @@
+class Solution {
+    public String solution(String s) {
+        String answer = "";
+        int num=2;
+        char ch;
+        
+        for(int i=0;i<s.length();i++){
+            ch=s.charAt(i);
+            
+            if(ch==' '){
+                num=2;
+                answer+=' ';
+                
+            }else{
+                if(num%2==0){
+                    if(ch>='a'&&ch<='z'){
+                        ch-=32;
+                        answer+=ch;
+                    }else{
+                        answer+=ch;
+                    }
+                    num++;
+                    
+                }else{
+                    if(ch>='A'&&ch<='Z'){
+                        ch+=32;
+                        answer+=ch;
+                    }else{
+                        answer+=ch;
+                    }
+                    num++;
+                    
+                }
+            }
+        }
+        return answer;
+    }
+}
