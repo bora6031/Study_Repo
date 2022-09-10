@@ -1,0 +1,12 @@
+class Solution {
+    public int[] solution(long n) {
+        String number=Long.toString(n);
+        int[] answer = new int[number.length()];
+        
+        int count=0;
+        for(int i=number.length()-1;i>=0;i--){
+            answer[i]=number.charAt(count++)-48;
+        }
+        return answer;
+    }
+}
